@@ -1,0 +1,6 @@
+applications:
+- name:    customer-satisfaction-prediction
+  host:    predict-satisfaction
+  memory:  128M
+  services:
+  - <predictive-analytics-service-name>
