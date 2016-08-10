@@ -161,6 +161,7 @@ with contextId=' + contextId + ', msg: ' + error);
         if (!error && response.statusCode === 200) {
           var models = JSON.parse(body);
           var count = models.length;
+          logger.debug(`There are ${count} models uploaded`);
           models.forEach(function (model) {
             client.getModel(model.id, function (error, modelMetadata) {
               if (error) {
@@ -168,14 +169,10 @@ with contextId=' + contextId + ', msg: ' + error);
                 return callback(error);
               } else {
                 model.tableData = modelMetadata.tableData;
-                count -= 1;
-                if (count <= 0) {
-                  logger.return('getModels()', models.length + ' model(s)');
-                  return callback(null, models);
-                }
               }
             });
           });
+          return callback(null, models);
         } else if (error) {
           logger.error('getModels()', error);
           return callback(error);
