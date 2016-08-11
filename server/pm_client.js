@@ -1,4 +1,4 @@
-/* eslint-env node*/
+/* eslint-env node es6*/
 
 'use strict';
 
@@ -159,20 +159,30 @@ with contextId=' + contextId + ', msg: ' + error);
         this.credentials.access_key + '"';
       request.get(modelsUri, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-          var models = JSON.parse(body);
-          var count = models.length;
-          logger.debug(`There are ${count} models uploaded`);
-          models.forEach(function (model) {
-            client.getModel(model.id, function (error, modelMetadata) {
-              if (error) {
-                logger.error('getModels()', error);
-                return callback(error);
-              } else {
-                model.tableData = modelMetadata.tableData;
-              }
+          let models = JSON.parse(body);
+          logger.debug(`There are ${models.length} models uploaded`);
+          let modelsData = models.map((model) => {
+            return new Promise((resolve, reject) => {
+              client.getModel(model.id, function (error, modelMetadata) {
+                if (error) {
+                  reject(error);
+                } else {
+                  model.tableData = modelMetadata.tableData;
+                  resolve();
+                }
+              });
             });
           });
-          return callback(null, models);
+          Promise.all(modelsData)
+          .then(() => {
+            logger.return('getModels()');
+            return callback(null, models);
+          }
+          )
+          .catch((err) => {
+            logger.error('geModels()', err);
+            return callback(error);
+          });
         } else if (error) {
           logger.error('getModels()', error);
           return callback(error);
