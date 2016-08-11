@@ -467,7 +467,7 @@
 	
 	
 	// module
-	exports.push([module.id, "/* style.css\n * This file provides css styles.\n */\n\n.table {\n\tbackground-color: #ffffff;\n\tcolor: black;\n\toverflow: auto;\n}\n\n.format-info {\n\tfont-size: smaller;\n\tcolor: #41d6c3;\n\tfont-style: italic;\n}\n\n.wide-container {\n\twidth: 95%;\n}\n\nfieldset {\n  max-width: 100%;\n\twidth: 80%;\n}\n\nfieldset .form-group {\n  max-width: inherit;\n  overflow: auto;\n}\n\n.ioTextStyle {\n\tfont-size: 14px;\n\tcolor: #555;\n\tfont-family: inherit;\n}\n\n.ioTextStyle table thead tr th {\n\tfont-weight: bold;\n\tfont-size: 14px;\n\tcolor: #152935;\n\tfont-family: inherit;\n\tbackground: #41d6c3;\n}\n\n.ioTextStyle table tbody tr td {\n\tfont-size: 14px;\n\tcolor: #555;\n\tfont-family: inherit;\n}\n\n#scoreDiv {\n\tmax-height: 30em;\n\toverflow: auto;\n}\n\n#streamSelect {\n\twidth: 48%;\n\tmargin-right: 4%;\n}\n\n#tableSelect {\n\twidth: 48%;\n}\n\n.alert {\n  position: relative\n}\n\n.special-alert {\n  margin: 10px;\n  min-width: 60%;\n  width: 50em;\n  max-width: 95%;\n  position: relative;\n  background-color: #c61c7d;\n  color: white;\n  border-width: 0;\n}\n\n.model-select {\n\tdisplay: inline;\n}\n\n.shadowed {\n\tbox-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);\n}\n\n.no-border {\n\tborder-width: 0;\n}\n\n.special-border {\n\tborder-color: #41d6c3;\n}\n\n.light-border {\n\tborder-color: white;\n}\n\n.dark-border {\n\tborder-color: black;\n}\n\n.base-color {\n\tbackground-color: #152935;\n\tcolor: white;\n}\n\n.base-color2 {\n\tbackground-color: #26343f;\n\tcolor: white;\n}\n\n.base-color3 {\n\tbackground-color: #273d4b;\n\tcolor: white;\n}\n\n.base-color4 {\n\tbackground-color: #3b4b54;\n\tcolor: white;\n}\n\n.light-color {\n\tbackground-color: #eff2f5;\n\tcolor: black;\n}\n\n.light-color2 {\n\tbackground-color: #white;\n\tcolor: black;\n}\n\n.special-color {\n\tbackground-color: #41d6c3;\n\tcolor: black;\n}\n\n.small-nav {\n\theight: 40px;\n\tmin-height: 40px;\n\tmargin: 0;\n\tpadding: 0;\n}\n\n.small-nav li a {\n\tpadding-top: 0px;\n}\n\n.lower-nav {\n\ttop: 40px;\n}\n\n#application-name {\n\tcolor: white;\n\tmargin: 0;\n\tfont-size: 28px;\n}\n\n.button-color {\n\tcolor: #5aaafa;\n}\n\n.button-color:visited {\n\tcolor: #5aaafa;\n}\n\n.button-color:hover {\n\tcolor: #eff2f5;\n}\n\n.navbar-default .navbar-nav li a {\n    color: #5aaafa;\n}\n\n.navbar-default .navbar-nav li a:visited {\n    color: #5aaafa;\n}\n\n.navbar-default .navbar-nav li a:hover {\n    color: #eff2f5;\n}\n\n.inline-icon {\n\twidth: 24px;\n\theight: 24px;\n\tdisplay: inline;\n\tmargin-right: 5px;\n\tmargin-left: 10px;\n}\n\n.loadingOverlayContainer {\n\tposition: fixed;\n\tpadding: 0;\n\tmargin: 0;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground: rgba(0, 32, 49, 0.8);\n\tz-index: 100;\n}\n\n.loadingContainer {\n\twidth: 90px;\n\tmargin: 0 auto;\n\tposition: absolute;\n\ttop: calc(50% - 45px);\n\tleft: calc(50% - 45px);\n}\n\n.loader {\n  height: 100%;\n  width: 100%;\n  -webkit-transform: translateZ(0) rotate(300deg);\n  transform: translateZ(0) rotate(300deg);\n  -webkit-transform-origin: 25px 25px;\n  transform-origin: 25px 25px;\n  -webkit-transform-origin: center center;\n  transform-origin: center center;\n  -webkit-animation: b 4s ease-out infinite;\n  animation: b 4s ease-out infinite;\n}\n\n.loader .loader__path {\n  stroke-dasharray: 125px;\n  stroke-dashoffset: 9.7px;\n  r: 20px;\n  cx: 50px;\n  cy: 50px;\n  fill: transparent;\n  stroke: #a6266e;\n  stroke-width: 4.65116px;\n  stroke-linecap: butt;\n  transition: stroke-dashoffset 1s cubic-bezier(.5,.08,0,1);\n  -webkit-animation: a 4s ease-out infinite;\n  animation: a 4s ease-out infinite;\n}\n\n.large {\n  width: 90px;\n  height: 90px;\n}\n\n.loader--dark .loader__path {\n  stroke: #41d6c3;\n}\n\n@-webkit-keyframes a {\n  0% {\n    stroke-dashoffset: 9.7px;\n  }\n\n  60% {\n    stroke-dashoffset: 113.52px;\n  }\n\n  to {\n    stroke-dashoffset: 9.7px;\n  }\n}\n\n@keyframes a {\n  0% {\n    stroke-dashoffset: 9.7px;\n  }\n\n  60% {\n    stroke-dashoffset: 113.52px;\n  }\n\n  to {\n    stroke-dashoffset: 9.7px;\n  }\n}\n\n@-webkit-keyframes b {\n  0% {\n    -webkit-transform: rotate(300deg);\n    transform: rotate(300deg);\n  }\n\n  60% {\n    -webkit-transform: rotate(1320deg);\n    transform: rotate(1320deg);\n  }\n\n  to {\n    -webkit-transform: rotate(2100deg);\n    transform: rotate(2100deg);\n  }\n}\n\n@keyframes b {\n  0% {\n    -webkit-transform: rotate(300deg);\n    transform: rotate(300deg);\n  }\n\n  60% {\n    -webkit-transform: rotate(1320deg);\n    transform: rotate(1320deg);\n  }\n\n  to {\n    -webkit-transform: rotate(2100deg);\n    transform: rotate(2100deg);\n  }\n}\n", ""]);
+	exports.push([module.id, "/* style.css\r\n * This file provides css styles.\r\n */\r\n\r\n.table {\r\n\tbackground-color: #ffffff;\r\n\tcolor: black;\r\n\toverflow: auto;\r\n}\r\n\r\n.format-info {\r\n\tfont-size: smaller;\r\n\tcolor: #41d6c3;\r\n\tfont-style: italic;\r\n}\r\n\r\n.wide-container {\r\n\twidth: 95%;\r\n}\r\n\r\nfieldset {\r\n  max-width: 100%;\r\n\twidth: 80%;\r\n}\r\n\r\nfieldset .form-group {\r\n  max-width: inherit;\r\n  overflow: auto;\r\n}\r\n\r\n.ioTextStyle {\r\n\tfont-size: 14px;\r\n\tcolor: #555;\r\n\tfont-family: inherit;\r\n}\r\n\r\n.ioTextStyle table thead tr th {\r\n\tfont-weight: bold;\r\n\tfont-size: 14px;\r\n\tcolor: #152935;\r\n\tfont-family: inherit;\r\n\tbackground: #41d6c3;\r\n}\r\n\r\n.ioTextStyle table tbody tr td {\r\n\tfont-size: 14px;\r\n\tcolor: #555;\r\n\tfont-family: inherit;\r\n}\r\n\r\n#scoreDiv {\r\n\tmax-height: 30em;\r\n\toverflow: auto;\r\n}\r\n\r\n#streamSelect {\r\n\twidth: 48%;\r\n\tmargin-right: 4%;\r\n}\r\n\r\n#tableSelect {\r\n\twidth: 48%;\r\n}\r\n\r\n.alert {\r\n  position: relative\r\n}\r\n\r\n.special-alert {\r\n  margin: 10px;\r\n  min-width: 60%;\r\n  width: 50em;\r\n  max-width: 95%;\r\n  position: relative;\r\n  background-color: #c61c7d;\r\n  color: white;\r\n  border-width: 0;\r\n}\r\n\r\n.model-select {\r\n\tdisplay: inline;\r\n}\r\n\r\n.shadowed {\r\n\tbox-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);\r\n}\r\n\r\n.no-border {\r\n\tborder-width: 0;\r\n}\r\n\r\n.special-border {\r\n\tborder-color: #41d6c3;\r\n}\r\n\r\n.light-border {\r\n\tborder-color: white;\r\n}\r\n\r\n.dark-border {\r\n\tborder-color: black;\r\n}\r\n\r\n.base-color {\r\n\tbackground-color: #152935;\r\n\tcolor: white;\r\n}\r\n\r\n.base-color2 {\r\n\tbackground-color: #26343f;\r\n\tcolor: white;\r\n}\r\n\r\n.base-color3 {\r\n\tbackground-color: #273d4b;\r\n\tcolor: white;\r\n}\r\n\r\n.base-color4 {\r\n\tbackground-color: #3b4b54;\r\n\tcolor: white;\r\n}\r\n\r\n.light-color {\r\n\tbackground-color: #eff2f5;\r\n\tcolor: black;\r\n}\r\n\r\n.light-color2 {\r\n\tbackground-color: #white;\r\n\tcolor: black;\r\n}\r\n\r\n.special-color {\r\n\tbackground-color: #41d6c3;\r\n\tcolor: black;\r\n}\r\n\r\n.small-nav {\r\n\theight: 40px;\r\n\tmin-height: 40px;\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n}\r\n\r\n.small-nav li a {\r\n\tpadding-top: 0px;\r\n}\r\n\r\n.lower-nav {\r\n\ttop: 40px;\r\n}\r\n\r\n#application-name {\r\n\tcolor: white;\r\n\tmargin: 0;\r\n\tfont-size: 28px;\r\n}\r\n\r\n.button-color {\r\n\tcolor: #5aaafa;\r\n}\r\n\r\n.button-color:visited {\r\n\tcolor: #5aaafa;\r\n}\r\n\r\n.button-color:hover {\r\n\tcolor: #eff2f5;\r\n}\r\n\r\n.navbar-default .navbar-nav li a {\r\n    color: #5aaafa;\r\n}\r\n\r\n.navbar-default .navbar-nav li a:visited {\r\n    color: #5aaafa;\r\n}\r\n\r\n.navbar-default .navbar-nav li a:hover {\r\n    color: #eff2f5;\r\n}\r\n\r\n.inline-icon {\r\n\twidth: 24px;\r\n\theight: 24px;\r\n\tdisplay: inline;\r\n\tmargin-right: 5px;\r\n\tmargin-left: 10px;\r\n}\r\n\r\n.loadingOverlayContainer {\r\n\tposition: fixed;\r\n\tpadding: 0;\r\n\tmargin: 0;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tbackground: rgba(0, 32, 49, 0.8);\r\n\tz-index: 100;\r\n}\r\n\r\n.loadingContainer {\r\n\twidth: 90px;\r\n\tmargin: 0 auto;\r\n\tposition: absolute;\r\n\ttop: calc(50% - 45px);\r\n\tleft: calc(50% - 45px);\r\n}\r\n\r\n.loader {\r\n  height: 100%;\r\n  width: 100%;\r\n  -webkit-transform: translateZ(0) rotate(300deg);\r\n  transform: translateZ(0) rotate(300deg);\r\n  -webkit-transform-origin: 25px 25px;\r\n  transform-origin: 25px 25px;\r\n  -webkit-transform-origin: center center;\r\n  transform-origin: center center;\r\n  -webkit-animation: b 4s ease-out infinite;\r\n  animation: b 4s ease-out infinite;\r\n}\r\n\r\n.loader .loader__path {\r\n  stroke-dasharray: 125px;\r\n  stroke-dashoffset: 9.7px;\r\n  r: 20px;\r\n  cx: 50px;\r\n  cy: 50px;\r\n  fill: transparent;\r\n  stroke: #a6266e;\r\n  stroke-width: 4.65116px;\r\n  stroke-linecap: butt;\r\n  transition: stroke-dashoffset 1s cubic-bezier(.5,.08,0,1);\r\n  -webkit-animation: a 4s ease-out infinite;\r\n  animation: a 4s ease-out infinite;\r\n}\r\n\r\n.large {\r\n  width: 90px;\r\n  height: 90px;\r\n}\r\n\r\n.loader--dark .loader__path {\r\n  stroke: #41d6c3;\r\n}\r\n\r\n@-webkit-keyframes a {\r\n  0% {\r\n    stroke-dashoffset: 9.7px;\r\n  }\r\n\r\n  60% {\r\n    stroke-dashoffset: 113.52px;\r\n  }\r\n\r\n  to {\r\n    stroke-dashoffset: 9.7px;\r\n  }\r\n}\r\n\r\n@keyframes a {\r\n  0% {\r\n    stroke-dashoffset: 9.7px;\r\n  }\r\n\r\n  60% {\r\n    stroke-dashoffset: 113.52px;\r\n  }\r\n\r\n  to {\r\n    stroke-dashoffset: 9.7px;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes b {\r\n  0% {\r\n    -webkit-transform: rotate(300deg);\r\n    transform: rotate(300deg);\r\n  }\r\n\r\n  60% {\r\n    -webkit-transform: rotate(1320deg);\r\n    transform: rotate(1320deg);\r\n  }\r\n\r\n  to {\r\n    -webkit-transform: rotate(2100deg);\r\n    transform: rotate(2100deg);\r\n  }\r\n}\r\n\r\n@keyframes b {\r\n  0% {\r\n    -webkit-transform: rotate(300deg);\r\n    transform: rotate(300deg);\r\n  }\r\n\r\n  60% {\r\n    -webkit-transform: rotate(1320deg);\r\n    transform: rotate(1320deg);\r\n  }\r\n\r\n  to {\r\n    -webkit-transform: rotate(2100deg);\r\n    transform: rotate(2100deg);\r\n  }\r\n}\r\n", ""]);
 	
 	// exports
 
@@ -483,8 +483,6 @@
 	var React = __webpack_require__(13);
 	var ReactDOM = __webpack_require__(47);
 	var Dropzone = __webpack_require__(187);
-	
-	var isDarkStyle = true;
 	
 	var Loader = React.createClass({
 	  displayName: 'Loader',
@@ -508,8 +506,9 @@
 	  },
 	
 	  render: function render() {
-	    if (this.state.loadingVisible == true) {
-	      var loading = React.createElement(
+	    var loading = null;
+	    if (this.state.loadingVisible === true) {
+	      loading = React.createElement(
 	        'div',
 	        { className: 'loadingOverlayContainer' },
 	        React.createElement(
@@ -518,10 +517,7 @@
 	          React.createElement(Loader, null)
 	        )
 	      );
-	    } else {
-	      var loading = null;
 	    }
-	
 	    return loading;
 	  }
 	});
@@ -541,14 +537,18 @@
 	    mainLoader.setState({
 	      loadingVisible: true
 	    });
-	    this.serverRequest = $.get("/env/models", function (result) {
+	    this.serverRequest = $.get('/env/models', function (result) {
 	      this.setState({
 	        streams: result
 	      });
 	      mainLoader.setState({
 	        loadingVisible: false
 	      });
-	    }.bind(this));
+	    }.bind(this)).fail(function (jqXHR, textStatus, errorThrown) {
+	      mainLoader.setState({
+	        loadingVisible: false
+	      });
+	    });
 	  },
 	
 	  componentWillUnmount: function componentWillUnmount() {
@@ -557,34 +557,30 @@
 	
 	  _prepareInputInfo: function _prepareInputInfo(data) {
 	    var values = [];
-	
 	    Object.keys(data).forEach(function (key) {
-	      values.push(key + " (" + data[key] + ")");
+	      values.push(key + ' (' + data[key] + ')');
 	    });
-	
 	    return values.join(', ');
 	  },
 	
 	  onStreamSelectChange: function onStreamSelectChange(event) {
 	    ReactDOM.render(React.createElement('div', { className: 'format-info' }), document.getElementById('inputFormat'));
-	    if (document.getElementById("tableSelect") != null) document.getElementById("tableSelect").selectedIndex = 0;
+	    if (document.getElementById('tableSelect') != null) document.getElementById('tableSelect').selectedIndex = 0;
 	
 	    var selectedStreamData = JSON.parse(event.target.value);
 	    var selectedTable = null;
-	
-	    if (Object.keys(selectedStreamData.tableData).length == 1) {
+	    if (Object.keys(selectedStreamData.tableData).length === 1) {
 	      var tableName = Object.keys(selectedStreamData.tableData)[0];
 	      var headerData = selectedStreamData.tableData[tableName];
 	      selectedTable = {
 	        name: tableName,
 	        headerData: headerData
 	      };
-	
 	      ReactDOM.render(React.createElement(
 	        'div',
 	        { className: 'format-info' },
 	        ' ',
-	        "Format: " + this._prepareInputInfo(headerData),
+	        'Format: ' + this._prepareInputInfo(headerData),
 	        ' '
 	      ), document.getElementById('inputFormat'));
 	    }
@@ -601,10 +597,10 @@
 	      'div',
 	      { className: 'format-info' },
 	      ' ',
-	      "Format: " + this._prepareInputInfo(selectedTable.headerData),
+	      'Format: ' + this._prepareInputInfo(selectedTable.headerData),
 	      ' '
 	    ), document.getElementById('inputFormat'));
-	    {/* user requested to hardcode examples */}
+	    // user requested to hardcode examples
 	    var inputTextVal = '';
 	    if (this.state.selectedStreamData.id === 'drug1N') {
 	      inputTextVal = '35,F,HIGH,NORMAL,0.697,0.056';
@@ -619,12 +615,11 @@
 	  },
 	
 	  render: function render() {
-	    var context = this;
 	    var tableSelect = null;
 	    if (this.state.selectedStreamData != null && Object.keys(this.state.selectedStreamData.tableData).length > 1) {
-	      var tableSelect = React.createElement(
+	      tableSelect = React.createElement(
 	        'select',
-	        { id: 'tableSelect', onChange: this.onTableSelectChange, className: 'form-control model-select' },
+	        { id: 'tableSelect', onChange: onTableSelectChange, className: 'form-control model-select' },
 	        React.createElement(
 	          'option',
 	          { disabled: true, selected: true, key: 'select a branch' },
@@ -633,7 +628,7 @@
 	        Object.keys(this.state.selectedStreamData.tableData).map(function (tableName) {
 	          return React.createElement(
 	            'option',
-	            { value: JSON.stringify({ name: tableName, headerData: context.state.selectedStreamData.tableData[tableName] }), key: tableName },
+	            { value: JSON.stringify({ name: tableName, headerData: this.state.selectedStreamData.tableData[tableName] }), key: tableName },
 	            tableName
 	          );
 	        })
@@ -641,7 +636,6 @@
 	    }
 	
 	    var data = this.state.streams;
-	    var context = this;
 	    return React.createElement(
 	      'div',
 	      { id: 'model-select-container' },
@@ -697,12 +691,12 @@
 	
 	  render: function render() {
 	    var msgStyle = {
-	      color: "red",
-	      cursor: React.Children.count(this.props.children) > 0 ? "help" : "default"
+	      color: 'red',
+	      cursor: React.Children.count(this.props.children) > 0 ? 'help' : 'default'
 	    };
 	    var detailsStyle = {
-	      marginLeft: "40px",
-	      display: this.state.show ? "block" : "none"
+	      marginLeft: '40px',
+	      display: this.state.show ? 'block' : 'none'
 	    };
 	    return React.createElement(
 	      'div',
@@ -729,7 +723,7 @@
 	  },
 	  _handleChange: function _handleChange(event) {
 	    var val = event.target.value;
-	    if (typeof val != "undefined") {
+	    if (typeof val !== 'undefined') {
 	      this.setState({ inputText: val });
 	    }
 	  },
@@ -737,12 +731,12 @@
 	    var reader = new FileReader();
 	    var file = files[0];
 	    reader.onload = function (evt) {
-	      var isCsv = arguments.length <= 1 || arguments[1] === undefined ? file.name.endsWith(".csv") : arguments[1];
+	      var isCsv = arguments.length <= 1 || arguments[1] === undefined ? file.name.endsWith('.csv') : arguments[1];
 	
 	      var inputs = evt.target.result;
 	      // for .csv files remove the header (first line)
 	      if (isCsv) {
-	        inputs = inputs.slice(inputs.indexOf("\n")).trim();
+	        inputs = inputs.slice(inputs.indexOf('\n')).trim();
 	      }
 	      inputComponent.setState({ inputText: inputs });
 	      inputComponent.forceUpdate();
@@ -751,7 +745,7 @@
 	  },
 	  validate: function validate() {
 	    try {
-	      return this.state.inputText.trim() != "";
+	      return this.state.inputText.trim() !== '';
 	    } catch (err) {
 	      return false;
 	    }
@@ -761,16 +755,16 @@
 	    var _this = this;
 	
 	    var textareaStyle = {};
-	    if (this.state.inputText == '') {
+	    if (this.state.inputText === '') {
 	      textareaStyle = {
-	        backgroundImage: "url(images/upload.svg)",
-	        backgroundRepeat: "no-repeat",
-	        backgroundPosition: "center"
+	        backgroundImage: 'url(images/upload.svg)',
+	        backgroundRepeat: 'no-repeat',
+	        backgroundPosition: 'center'
 	      };
-	    };
+	    }
 	    return React.createElement(
 	      Dropzone,
-	      { style: { width: "100%" }, multiple: false, disablePreview: true, disableClick: true, accept: '.csv, text/plain', onDrop: this._onDrop, ref: 'dropzone' },
+	      { style: { width: '100%' }, multiple: false, disablePreview: true, disableClick: true, accept: '.csv, text/plain', onDrop: this._onDrop, ref: 'dropzone' },
 	      React.createElement(
 	        'div',
 	        null,
@@ -797,19 +791,19 @@
 	  },
 	
 	  _scoreTableAdjustment: function _scoreTableAdjustment() {
-	    document.getElementById("scoreDiv").style.width = (0.9 * document.body.clientWidth).toString() + "px";
+	    document.getElementById('scoreDiv').style.width = (0.9 * document.body.clientWidth).toString() + 'px';
 	  },
 	
 	  render: function render() {
 	    var data = JSON.parse(this.props.data);
+	    data = data[0].data;
 	    var header = data[0].header;
-	    var data = data[0].data;
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'label',
-	        { 'class': 'control-label', htmlFor: 'focusedInput' },
+	        { className: 'control-label', htmlFor: 'focusedInput' },
 	        'Output data'
 	      ),
 	      React.createElement(
@@ -857,20 +851,20 @@
 	});
 	
 	function _validateForm() {
-	  var selectResult = $("#modelCntn select").val();
-	  if (typeof selectResult === "undefined" || selectResult === null) {
+	  var selectResult = $('#modelCntn select').val();
+	  if (typeof selectResult === 'undefined' || selectResult === null) {
 	    _showError('Select model from a list.');
 	  } else if (!inputComponent.validate()) {
 	    _showError('Provide valid input data.');
 	  } else {
 	    return true;
-	  };
+	  }
 	  return false;
-	};
+	}
 	
 	function _showError(message) {
 	  alert.warn(message);
-	};
+	}
 	
 	var RunButton = React.createClass({
 	  displayName: 'RunButton',
@@ -894,9 +888,9 @@
 	    var tableResult = modelComponent.state.selectedTable;
 	    var contextId = streamResult.id;
 	    var data = {};
-	    data.scoringData = $("#inputCntn textarea").val().trim();
+	    data.scoringData = $('#inputCntn textarea').val().trim();
 	    data.tableName = tableResult.name;
-	    $.post("/env/score/" + contextId, data, function (response) {
+	    $.post('/env/score/' + contextId, data, function (response) {
 	      mainLoader.setState({
 	        loadingVisible: false
 	      });
@@ -913,7 +907,7 @@
 	        // suppress
 	      }
 	      ReactDOM.render(React.createElement('p', null), document.getElementById('scoringCntn'));
-	      _showError(err.length > 1 && err[1] != "null" ? err[1] : "Undefined error");
+	      _showError(err.length > 1 && err[1] != 'null' ? err[1] : 'Undefined error');
 	    });
 	  },
 	
@@ -921,7 +915,7 @@
 	    return React.createElement(
 	      'button',
 	      { type: 'button', onClick: this._updateResponse, className: 'btn btn-primary' },
-	      'Score'
+	      'Get score'
 	    );
 	  }
 	});
@@ -931,7 +925,7 @@
 	
 	  getInitialState: function getInitialState() {
 	    return {
-	      errorMsg: "",
+	      errorMsg: '',
 	      display: false
 	    };
 	  },
@@ -945,7 +939,7 @@
 	
 	  clear: function clear() {
 	    this.setState({
-	      errorMsg: "",
+	      errorMsg: '',
 	      display: false
 	    });
 	  },
