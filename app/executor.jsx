@@ -4,8 +4,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const Dropzone = require('react-dropzone');
 
-let isDarkStyle=true;
-
 var Loader = React.createClass({
   render: function () {
     return (
@@ -18,145 +16,142 @@ var Loader = React.createClass({
 });
 
 var LoaderImpl = React.createClass({
-	getInitialState: function() {
-			return {
-					loadingVisible: false
-			};
-	},
+  getInitialState: function () {
+    return {
+      loadingVisible: false
+    };
+  },
 
-	render: function(){
-		if(this.state.loadingVisible == true){
-			var loading = (
-				<div className="loadingOverlayContainer">
-					<div className="loadingContainer">
-						<Loader />
-					</div>
-				</div>
-			);
-		}else{
-			var loading = null;
-		}
-
-		return loading;
-	}
+  render: function () {
+    let loading = null;
+    if (this.state.loadingVisible === true) {
+      loading = (
+        <div className="loadingOverlayContainer">
+          <div className="loadingContainer">
+            <Loader />
+          </div>
+        </div>
+      );
+    }
+    return loading;
+  }
 });
 
 var ModelContainer = React.createClass({
-    getInitialState: function() {
-      return {
-        streams: [],
-				selectedStreamData: null,
-				selectedTable: null
-      };
-    },
+  getInitialState: function () {
+    return {
+      streams: [],
+      selectedStreamData: null,
+      selectedTable: null
+    };
+  },
 
-    componentDidMount: function() {
-        mainLoader.setState({
-          loadingVisible: true
-        });
-        this.serverRequest = $.get("/env/models", function (result) {
-        this.setState({
-            streams: result
-        });
-				mainLoader.setState({
-					loadingVisible: false
-				});
-        }.bind(this));
-    },
-
-    componentWillUnmount: function() {
-        this.serverRequest.abort();
-    },
-
-		_prepareInputInfo: function(data){
-			var values = [];
-
-			Object.keys(data).forEach(function(key){
-				values.push(key + " (" + data[key] + ")");
-			});
-
-			return values.join(', ');
-		},
-
-		onStreamSelectChange: function(event){
-			ReactDOM.render(<div className="format-info"></div>, document.getElementById('inputFormat'));
-			if(document.getElementById("tableSelect") != null)
-				document.getElementById("tableSelect").selectedIndex = 0;
-
-			var selectedStreamData = JSON.parse(event.target.value);
-			var selectedTable = null;
-
-			if(Object.keys(selectedStreamData.tableData).length == 1){
-				var tableName = Object.keys(selectedStreamData.tableData)[0];
-				var headerData = selectedStreamData.tableData[tableName];
-				selectedTable = {
-					name: tableName,
-					headerData: headerData
-				};
-
-
-				ReactDOM.render(<div className="format-info"> {"Format: " + this._prepareInputInfo(headerData)} </div>, document.getElementById('inputFormat'));
-			}
-
-			this.setState({
-				selectedStreamData: selectedStreamData,
-				selectedTable: selectedTable
-			});
-		},
-
-		onTableSelectChange: function(event){
-			var selectedTable = JSON.parse(event.target.value);
-			ReactDOM.render(<div className="format-info"> {"Format: " + this._prepareInputInfo(selectedTable.headerData)} </div>, document.getElementById('inputFormat'));
-			{/* user requested to hardcode examples */}
-			var inputTextVal = '';
-			if (this.state.selectedStreamData.id==='drug1N') {
-				inputTextVal = '35,F,HIGH,NORMAL,0.697,0.056';
-			}
-			this.setState({
-				selectedTable: selectedTable
-			});
-			inputComponent.setState({
-				inputText: inputTextVal
-			});
-			inputComponent.forceUpdate();
-		},
-
-    render: function() {
-				var context = this;
-				var tableSelect = null;
-				if(this.state.selectedStreamData != null && Object.keys(this.state.selectedStreamData.tableData).length > 1){
-					var tableSelect = (
-						<select id="tableSelect" onChange={this.onTableSelectChange} className="form-control model-select">
-				      <option disabled selected key="select a branch"> -- select a branch -- </option>
-				      {Object.keys(this.state.selectedStreamData.tableData).map(function(tableName){
-				        return (
-									<option value={JSON.stringify({name: tableName , headerData: context.state.selectedStreamData.tableData[tableName]})} key={tableName}>{tableName}</option>
-								);
-				      })}
-				    </select>
-					);
-				}
-
-        var data = this.state.streams;
-				var context = this;
-        return (
-				<div id="model-select-container">
-			    <select id="streamSelect" onChange={this.onStreamSelectChange} className="form-control model-select">
-			      <option disabled selected key="select a model"> -- select a model -- </option>
-			      {data.map(function(entry){
-			        return (
-								<option value={JSON.stringify(entry)} key={entry.id}>{entry.stream}</option>
-							);
-			      })}
-			    </select>
-					{tableSelect}
-				</div>
-        );
+  componentDidMount: function () {
+    mainLoader.setState({
+      loadingVisible: true
+    });
+    this.serverRequest = $.get('/env/models', function (result) {
+      this.setState({
+        streams: result
+      });
+      mainLoader.setState({
+        loadingVisible: false
+      });
     }
+    .bind(this))
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      mainLoader.setState({
+        loadingVisible: false
+      });
+    });
+  },
+
+  componentWillUnmount: function () {
+    this.serverRequest.abort();
+  },
+
+  _prepareInputInfo: function (data) {
+    let values = [];
+    Object.keys(data).forEach(function (key) {
+      values.push(key + ' (' + data[key] + ')');
+    });
+    return values.join(', ');
+  },
+
+  onStreamSelectChange: function (event) {
+    ReactDOM.render(<div className="format-info"></div>, document.getElementById('inputFormat'));
+    if (document.getElementById('tableSelect') != null)
+      document.getElementById('tableSelect').selectedIndex = 0;
+
+    let selectedStreamData = JSON.parse(event.target.value);
+    let selectedTable = null;
+    if (Object.keys(selectedStreamData.tableData).length === 1) {
+      let tableName = Object.keys(selectedStreamData.tableData)[0];
+      let headerData = selectedStreamData.tableData[tableName];
+      selectedTable = {
+        name: tableName,
+        headerData: headerData
+      };
+      ReactDOM.render(<div className="format-info"> {'Format: ' + this._prepareInputInfo(headerData)} </div>, document.getElementById('inputFormat'));
+    }
+
+    this.setState({
+      selectedStreamData: selectedStreamData,
+      selectedTable: selectedTable
+    });
+  },
+
+  onTableSelectChange: function (event) {
+    let selectedTable = JSON.parse(event.target.value);
+    ReactDOM.render(<div className="format-info"> {'Format: ' + this._prepareInputInfo(selectedTable.headerData)} </div>, document.getElementById('inputFormat'));
+    // user requested to hardcode examples
+    var inputTextVal = '';
+    if (this.state.selectedStreamData.id === 'drug1N') {
+      inputTextVal = '35,F,HIGH,NORMAL,0.697,0.056';
+    }
+    this.setState({
+      selectedTable: selectedTable
+    });
+    inputComponent.setState({
+      inputText: inputTextVal
+    });
+    inputComponent.forceUpdate();
+  },
+
+  render: function () {
+    let tableSelect = null;
+    if (this.state.selectedStreamData != null && Object.keys(this.state.selectedStreamData.tableData).length > 1) {
+      tableSelect = (
+        <select id="tableSelect" onChange={onTableSelectChange} className="form-control model-select">
+          <option disabled selected key="select a branch"> -- select a branch -- </option>
+          {Object.keys(this.state.selectedStreamData.tableData).map(function (tableName) {
+            return (
+              <option value={JSON.stringify({name: tableName, headerData: this.state.selectedStreamData.tableData[tableName]})} key={tableName}>{tableName}</option>
+            );
+          })}
+        </select>
+      );
+    }
+
+    let data = this.state.streams;
+    return (
+      <div id="model-select-container">
+        <select id="streamSelect" onChange={this.onStreamSelectChange} className="form-control model-select">
+          <option disabled selected key="select a model"> -- select a model -- </option>
+          {data.map(function (entry) {
+            return (
+              <option value={JSON.stringify(entry)} key={entry.id}>{entry.stream}</option>
+            );
+          })}
+        </select>
+        {tableSelect}
+      </div>
+    );
+  }
 });
 
 var Text = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <label className="control-label">{this.props.label} {this.props.value}</label>
     );
@@ -164,26 +159,26 @@ var Text = React.createClass({
 });
 
 var ExpandingText = React.createClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       show: false
     };
   },
 
-  _expand: function() {
+  _expand: function () {
     this.setState({
       show: !this.state.show
     });
   },
 
-  render: function() {
+  render: function () {
     var msgStyle = {
-      color: "red",
-      cursor: React.Children.count(this.props.children)>0 ? "help" : "default"
+      color: 'red',
+      cursor: React.Children.count(this.props.children) > 0 ? 'help' : 'default'
     };
     var detailsStyle = {
-      marginLeft: "40px",
-      display: this.state.show ? "block" : "none"
+      marginLeft: '40px',
+      display: this.state.show ? 'block' : 'none'
     };
     return (
       <div>
@@ -192,54 +187,53 @@ var ExpandingText = React.createClass({
           {this.props.children}
         </div>
       </div>
-    )
+    );
   }
-})
+});
 
 var Input = React.createClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return {inputText: ''};
   },
-  _handleChange: function(event) {
-    var val = event.target.value;
-    if (typeof val != "undefined") {
+  _handleChange: function (event) {
+    let val = event.target.value;
+    if (typeof val !== 'undefined') {
       this.setState({inputText: val});
     }
   },
   _onDrop: function (files) {
     let reader = new FileReader();
     let file = files[0];
-    reader.onload = (evt, isCsv=file.name.endsWith(".csv")) => {
+    reader.onload = (evt, isCsv = file.name.endsWith('.csv')) => {
       let inputs = evt.target.result;
       // for .csv files remove the header (first line)
       if (isCsv) {
-        inputs = inputs.slice(inputs.indexOf("\n")).trim();
+        inputs = inputs.slice(inputs.indexOf('\n')).trim();
       }
       inputComponent.setState({inputText: inputs});
       inputComponent.forceUpdate();
     };
     reader.readAsText(file);
   },
-  validate: function() {
+  validate: function () {
     try {
-      return this.state.inputText.trim() != "";
-    }
-    catch(err) {
+      return this.state.inputText.trim() !== '';
+    } catch (err) {
       return false;
     }
   },
 
-  render: function() {
+  render: function () {
     let textareaStyle = {};
-    if (this.state.inputText=='') {
+    if (this.state.inputText === '') {
       textareaStyle = {
-        backgroundImage: "url(images/upload.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center"
+        backgroundImage: 'url(images/upload.svg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center'
       };
-    };
+    }
     return (
-        <Dropzone style={{width: "100%"}} multiple={false} disablePreview={true} disableClick={true} accept=".csv, text/plain" onDrop={this._onDrop} ref="dropzone">
+      <Dropzone style={{width: '100%'}} multiple={false} disablePreview={true} disableClick={true} accept=".csv, text/plain" onDrop={this._onDrop} ref="dropzone">
         <div>
           <textarea
             style={textareaStyle}
@@ -247,105 +241,105 @@ var Input = React.createClass({
             onChange={this._handleChange}
             onDoubleClick={() => {this.refs.dropzone.open();}} >
           </textarea>
-          </div>
-        </Dropzone>
+        </div>
+      </Dropzone>
     );
   }
 });
 
 var ScoreTable = React.createClass({
-		componentDidMount: function() {
-			window.onresize = function(){
-				this._scoreTableAdjustment();
-			}
-			this._scoreTableAdjustment();
-		},
+  componentDidMount: function () {
+    window.onresize = function () {
+      this._scoreTableAdjustment();
+    };
+    this._scoreTableAdjustment();
+  },
 
-		_scoreTableAdjustment: function (){
-			document.getElementById("scoreDiv").style.width = (0.9 * document.body.clientWidth).toString() + "px";
-		},
+  _scoreTableAdjustment: function () {
+    document.getElementById('scoreDiv').style.width = (0.9 * document.body.clientWidth).toString() + 'px';
+  },
 
-    render: function() {
-        var data = JSON.parse(this.props.data);
-        var header = data[0].header;
-        var data = data[0].data;
-        return (
-					<div>
-						<label class="control-label" htmlFor="focusedInput">Output data</label>
-	          <div id="scoreDiv" className="ioTextStyle">
-	            <table id="scoreTable" className="table table-bordered light-color2">
-	                <thead>
-	                    <tr>
-	                        {header.map(function(entry) {
-	                            return <th>{entry}</th>;
-	                        })}
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                    {data.map(function(row) {
-	                        return (
-	                            <tr>
-	                                {row.map(function(entry) {
-	                                    return <td>{entry}</td>;
-	                                })}
-	                            </tr>
-	                        );
-	                    })}
-	                </tbody>
-	            </table>
-	          </div>
-					</div>
-        );
-    }
+  render: function () {
+    let data = JSON.parse(this.props.data);
+    data = data[0].data;
+    var header = data[0].header;
+    return (
+      <div>
+        <label className="control-label" htmlFor="focusedInput">Output data</label>
+        <div id="scoreDiv" className="ioTextStyle">
+          <table id="scoreTable" className="table table-bordered light-color2">
+            <thead>
+              <tr>
+                {header.map(function (entry) {
+                  return <th>{entry}</th>;
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map(function (row) {
+                return (
+                  <tr>
+                    {row.map(function (entry) {
+                      return <td>{entry}</td>;
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
 });
 
 function _validateForm() {
-  let selectResult = $("#modelCntn select").val();
-  if (typeof selectResult === "undefined" || selectResult === null) {
+  let selectResult = $('#modelCntn select').val();
+  if (typeof selectResult === 'undefined' || selectResult === null) {
     _showError('Select model from a list.');
   } else if (!inputComponent.validate()) {
     _showError('Provide valid input data.');
   } else {
     return true;
-  };
+  }
   return false;
-};
+}
 
 function _showError(message) {
   alert.warn(message);
-};
+}
 
 var RunButton = React.createClass({
-  _updateResponse: function(e) {
+  _updateResponse: function (e) {
     alert.clear();
     e.preventDefault();
 
     if (!_validateForm()) {
       return;
     }
-		mainLoader.setState({
-			loadingVisible: true
-		});
+    mainLoader.setState({
+      loadingVisible: true
+    });
     ReactDOM.render(
       <p>Waiting for a score....</p>,
       document.getElementById('scoringCntn')
     );
-		var streamResult = modelComponent.state.selectedStreamData;
-		var tableResult = modelComponent.state.selectedTable;
+    var streamResult = modelComponent.state.selectedStreamData;
+    var tableResult = modelComponent.state.selectedTable;
     var contextId = streamResult.id;
     var data = {};
-		data.scoringData = $("#inputCntn textarea").val().trim();
-		data.tableName = tableResult.name;
-    $.post("/env/score/"+contextId, data, function(response) {
-			mainLoader.setState({
-				loadingVisible: false
-			});
+    data.scoringData = $('#inputCntn textarea').val().trim();
+    data.tableName = tableResult.name;
+    $.post('/env/score/' + contextId, data, function (response) {
+      mainLoader.setState({
+        loadingVisible: false
+      });
       ReactDOM.render(
         <ScoreTable data={JSON.stringify(response)} />,
         document.getElementById('scoringCntn')
       );
     })
-    .fail(function( jqXHR, textStatus, errorThrown) {
+    .fail(function (jqXHR, textStatus, errorThrown) {
       mainLoader.setState({
         loadingVisible: false
       });
@@ -353,45 +347,45 @@ var RunButton = React.createClass({
       let err = [jqXHR];
       try {
         err = err[0].responseJSON.error.split(/(?:,\smsg=|,\sdetails:)/);
-      } catch(e) {
+      } catch (e) {
         // suppress
       }
       ReactDOM.render(<p></p>, document.getElementById('scoringCntn'));
-      _showError(err.length>1 && err[1]!="null" ? err[1] : "Undefined error");
+      _showError(err.length > 1 && err[1] != 'null' ? err[1] : 'Undefined error');
     });
   },
 
-  render: function() {
+  render: function () {
     return (
-      <button type="button" onClick={this._updateResponse} className="btn btn-primary">Score</button>
+      <button type="button" onClick={this._updateResponse} className="btn btn-primary">Get score</button>
     );
   }
 });
 
 var AlertImpl = React.createClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return {
-      errorMsg: "",
+      errorMsg: '',
       display: false
     };
   },
 
-  warn: function(msg) {
+  warn: function (msg) {
     this.setState({
       errorMsg: msg,
       display: true
     });
   },
 
-  clear: function() {
+  clear: function () {
     this.setState({
-      errorMsg: "",
+      errorMsg: '',
       display: false
     });
   },
 
-  render: function() {
-    if(!this.state.display)
+  render: function () {
+    if (!this.state.display)
       return null;
     else
       return (
