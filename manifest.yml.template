@@ -1,5 +1,0 @@
-applications:
-- name:    customer-satisfaction-prediction
-  memory:  256M
-  services:
-  - <predictive-analytics-service-name>
