@@ -7,17 +7,17 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "bootstrap": "^3.3.6",
-    "cfenv": "1.0.x",
-    "express": "4.13.x",
-    "log4js": "^0.6.37",
-    "morgan": "~1.7.0",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-dropzone": "^3.4.0",
-    "request": "^2.72.0",
-    "xml2js": "^0.4.16"
+    "body-parser": "1.15.0",
+    "bootstrap": "3.3.6",
+    "cfenv": "1.0.3",
+    "express": "4.13.4",
+    "log4js": "0.6.37",
+    "morgan": "1.7.0",
+    "react": "15.0.1",
+    "react-dom": "15.0.1",
+    "react-dropzone": "3.4.0",
+    "request": "2.72.0",
+    "xml2js": "0.4.16"
   },
   "repository": {},
   "engines": {

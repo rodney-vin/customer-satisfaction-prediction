@@ -78,7 +78,7 @@ var ModelContainer = React.createClass({
     return values.join(', ');
   },
 
-  onStreamSelectChange: function (event) {
+  _onStreamSelectChange: function (event) {
     ReactDOM.render(<div className="format-info"></div>, document.getElementById('inputFormat'));
     if (document.getElementById('tableSelect') != null)
       document.getElementById('tableSelect').selectedIndex = 0;
@@ -101,7 +101,7 @@ var ModelContainer = React.createClass({
     });
   },
 
-  onTableSelectChange: function (event) {
+  _onTableSelectChange: function (event) {
     let selectedTable = JSON.parse(event.target.value);
     ReactDOM.render(<div className="format-info"> {'Format: ' + this._prepareInputInfo(selectedTable.headerData)} </div>, document.getElementById('inputFormat'));
     // user requested to hardcode examples
@@ -121,22 +121,24 @@ var ModelContainer = React.createClass({
   render: function () {
     let tableSelect = null;
     if (this.state.selectedStreamData != null && Object.keys(this.state.selectedStreamData.tableData).length > 1) {
+      let context = this;
       tableSelect = (
-        <select id="tableSelect" onChange={onTableSelectChange} className="form-control model-select">
+        <select id="tableSelect" onChange={this._onTableSelectChange} className="form-control model-select">
           <option disabled selected key="select a branch"> -- select a branch -- </option>
           {Object.keys(this.state.selectedStreamData.tableData).map(function (tableName) {
             return (
-              <option value={JSON.stringify({name: tableName, headerData: this.state.selectedStreamData.tableData[tableName]})} key={tableName}>{tableName}</option>
+              <option value={JSON.stringify({name: tableName, headerData: context.state.selectedStreamData.tableData[tableName]})} key={tableName}>{tableName}</option>
             );
           })}
         </select>
       );
+
     }
 
     let data = this.state.streams;
     return (
       <div id="model-select-container">
-        <select id="streamSelect" onChange={this.onStreamSelectChange} className="form-control model-select">
+        <select id="streamSelect" onChange={this._onStreamSelectChange} className="form-control model-select">
           <option disabled selected key="select a model"> -- select a model -- </option>
           {data.map(function (entry) {
             return (
@@ -260,9 +262,9 @@ var ScoreTable = React.createClass({
   },
 
   render: function () {
-    let data = JSON.parse(this.props.data);
-    data = data[0].data;
-    var header = data[0].header;
+    let propsData = JSON.parse(this.props.data);
+    let data = propsData.data;
+    let header = propsData.header;
     return (
       <div>
         <label className="control-label" htmlFor="focusedInput">Output data</label>
@@ -335,7 +337,7 @@ var RunButton = React.createClass({
         loadingVisible: false
       });
       ReactDOM.render(
-        <ScoreTable data={JSON.stringify(response)} />,
+        <ScoreTable data={JSON.stringify(response[0])} />,
         document.getElementById('scoringCntn')
       );
     })
